@@ -52,5 +52,14 @@ fun main(args: Array<String>) {
     for((hex, rgb, hsl) in colours){
         println("hex=$hex; rgb=$rgb; hsl=$hsl")
     }
+
+    for ((x,y,z) in listOf(Vector3(0.2,0.1,0.5), Vector3(-12.0, 3.145, 5.100))){
+        println("Coordinates: x=$x, y=$y, z=$z")
+    }
+
+
+    for((sensorId, value) in listOf(Sensor("DS18B20", 29.2), Sensor("DS18B21", 32.1))){
+        println("Sensor $sensorId reading is $value degrees Celsius")
+    }
 }
 
