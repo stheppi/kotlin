@@ -6,8 +6,6 @@ import com.lightbend.lagom.javadsl.api.ServiceCall
 import com.lightbend.lagom.javadsl.persistence.PersistentEntityRegistry
 import com.programming.kotlin.chapter12.hello.api.GreetingMessage
 import com.programming.kotlin.chapter12.hello.api.HelloService
-import com.programming.kotlin.chapter12.hello.impl.HelloCommand.Hello
-import com.programming.kotlin.chapter12.hello.impl.HelloCommand.UseGreetingMessage
 import java.util.*
 import java.util.concurrent.CompletableFuture.completedFuture
 import javax.inject.Inject

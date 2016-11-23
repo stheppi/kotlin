@@ -41,6 +41,26 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>[ groupId ]</groupId>
+                            <artifactId>[ artifactId ]</artifactId>
+                            <version>[ version ]</version>
+                            <type>[ packaging ]</type>
+                            <classifier> [classifier - optional] </classifier>
+                            <overWrite>[ true or false ]</overWrite>
+                            <outputDirectory>[ output directory ]</outputDirectory>
+                            <destFileName>[ filename ]</destFileName>
+                        </artifactItem>
+                    </artifactItems>
+                    <!-- other configurations here -->
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <version>${kotlin.version}</version>
@@ -122,6 +142,22 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-kotlin</artifactId>
+                <version>2.7.8</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-stdlib</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-reflect</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
                 <groupId>com.lightbend.lagom</groupId>
                 <artifactId>lagom-javadsl-server_2.11</artifactId>
                 <version>${lagom.version}</version>
@@ -168,23 +204,24 @@
                 <version>${kotlin.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-reflect</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>io.kotlintest</groupId>
                 <artifactId>kotlintest</artifactId>
                 <version>${kotlin.test.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.module</groupId>
-                <artifactId>jackson-module-kotlin</artifactId>
-                <version>2.8.4</version>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <kotlin.version>1.1-M03-eap-21</kotlin.version>
+        <kotlin.version>1.1-M03-eap-24</kotlin.version>
         <lagom.version>1.2.0</lagom.version>
         <play.version>2.5.4</play.version>
         <conductr.lib.name>lagom10-conductr-bundle-lib_2.11</conductr.lib.name>
